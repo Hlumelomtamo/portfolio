@@ -1,0 +1,247 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Courier New', monospace;
+    color: white;
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Curtain Effect */
+.curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 24px;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Curtain Animation (Realistic Sliding) */
+.curtain.open {
+    animation: openCurtain 2s ease-in-out forwards;
+}
+
+/* Curtain Message */
+.click-message {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Curtain opening effect */
+@keyframes openCurtain {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1);
+    }
+    100% {
+        transform: translateX(-100%) scaleX(1);
+        opacity: 0;
+    }
+}
+
+/* Matrix Effect Background */
+.matrix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.1; /* So it doesn’t completely overpower the content */
+    display: block;
+}
+
+/* Matrix falling effect with fade-out */
+@keyframes fall {
+    0% {
+        top: -100px;
+        opacity: 1;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+/* Header Styling */
+header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ff6ec7;
+}
+
+/* About Section */
+section#about {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    text-align: center;
+}
+
+section#about h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+section#about p {
+    font-size: 1.2em;
+}
+
+/* Projects Section */
+#projects {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.project {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+}
+
+.project h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #f7ff00;
+}
+
+.project p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.project a {
+    color: #ff6ec7;
+    font-size: 1.1em;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.project a:hover {
+    border-color: #ff6ec7;
+}
+
+/* Game Section */
+#gameContainer {
+    text-align: center;
+    margin: 50px 0;
+}
+
+#scoreBoard {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#gameArea {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background-color: #333;
+    border: 2px solid #fff;
+}
+
+.fallingObject {
+    width: 40px;
+    height: 40px;
+    background-color: #ff6ec7;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+/* Footer Styling */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+
+
+body {
+    font-family: 'Courier New', monospace; /* Matrix-style font */
+    background-color: black;
+    overflow: hidden;
+    color: #00FF00; /* Green text color */
+}
+
+.matrix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent clicks on the falling characters */
+}
+
+.matrix span {
+    position: absolute;
+    color: #00FF00;
+    font-size: 20px;
+    white-space: nowrap;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -20px;
+    }
+    100% {
+        top: 100vh;
+    }
+}
