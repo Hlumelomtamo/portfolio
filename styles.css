@@ -8,8 +8,8 @@
 /* Body Styling */
 body {
     font-family: 'Courier New', monospace;
-    color: white;
-    background: #000;
+    background-color: black;
+    color: #00FF00;
     overflow: hidden;
     height: 100vh;
 }
@@ -29,39 +29,27 @@ body {
     font-size: 24px;
     color: white;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Curtain Animation (Realistic Sliding) */
-.curtain.open {
-    animation: openCurtain 2s ease-in-out forwards;
-}
-
-/* Curtain Message */
 .click-message {
     font-size: 24px;
     font-weight: bold;
 }
 
-/* Curtain opening effect */
+/* Curtain Animation */
+.curtain.open {
+    animation: openCurtain 2s ease-in-out forwards;
+}
+
 @keyframes openCurtain {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-50%) scaleX(1);
-    }
-    100% {
-        transform: translateX(-100%) scaleX(1);
-        opacity: 0;
-    }
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); opacity: 0; }
 }
 
 /* Matrix Effect Background */
 .matrix {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -69,20 +57,29 @@ body {
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
-    opacity: 0.1; /* So it doesn’t completely overpower the content */
-    display: block;
+    opacity: 0.5;
+    color: lime;
+    font-family: monospace;
 }
 
-/* Matrix falling effect with fade-out */
+.matrix span {
+    position: absolute;
+    top: 0;
+    font-size: 16px;
+    animation: fall linear forwards;
+    color: #00FF00;
+}
+
 @keyframes fall {
-    0% {
-        top: -100px;
-        opacity: 1;
-    }
-    100% {
-        top: 100vh;
+    to {
+        transform: translateY(100vh);
         opacity: 0;
     }
+}
+
+/* Hidden Portfolio Before Unlock */
+.hidden {
+    display: none;
 }
 
 /* Header Styling */
@@ -120,7 +117,7 @@ nav ul li a:hover {
 /* About Section */
 section#about {
     background: rgba(0, 0, 0, 0.5);
-    padding: 50px;
+    padding: 100px 50px 50px;
     text-align: center;
 }
 
@@ -186,20 +183,52 @@ section#about p {
     width: 100%;
     height: 400px;
     position: relative;
-    background-color: #333;
+    background-color: #111;
     border: 2px solid #fff;
+    overflow: hidden;
 }
 
+/* Falling Object Style */
 .fallingObject {
     width: 40px;
     height: 40px;
-    background-color: #ff6ec7;
-    border-radius: 50%;
     position: absolute;
     top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
+    border-radius: 50%;
     cursor: pointer;
+    animation: fallDown 5s linear forwards;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Click feedback */
+.fallingObject.clicked {
+    transform: scale(1.5);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Falling Animation */
+@keyframes fallDown {
+    to {
+        top: 100%;
+    }
+}
+
+/* Start Game Button */
+#startGame {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff6ec7;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#startGame:hover {
+    background-color: #ff3fb3;
 }
 
 /* Footer Styling */
@@ -209,39 +238,4 @@ footer {
     padding: 20px;
     font-size: 14px;
     color: white;
-}
-
-
-
-body {
-    font-family: 'Courier New', monospace; /* Matrix-style font */
-    background-color: black;
-    overflow: hidden;
-    color: #00FF00; /* Green text color */
-}
-
-.matrix {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Prevent clicks on the falling characters */
-}
-
-.matrix span {
-    position: absolute;
-    color: #00FF00;
-    font-size: 20px;
-    white-space: nowrap;
-    animation: fall 3s linear infinite;
-}
-
-@keyframes fall {
-    0% {
-        top: -20px;
-    }
-    100% {
-        top: 100vh;
-    }
 }
