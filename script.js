@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 score++;
                 scoreDisplay.textContent = score;
                 fallingObject.classList.add("clicked");
-                setTimeout(() => fallingObject.remove(), 300);
+                setTimeout(() => fallingObject.remove(), 6000);
             });
 
             fallingObject.addEventListener("animationend", () => {
